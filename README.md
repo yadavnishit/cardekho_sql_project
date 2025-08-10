@@ -15,118 +15,136 @@
 ## Business Problems and Solutions
 
 1. count the total number of car in the file
-   select count(*) from car;
 
-2. count the total number of car by each brand
-   select brand , count(*) from car
-   group by brand;
+       select count(*) from car;
 
-3. count the total number of car by fuel type
-   select fuel_type , count(*) from car
-   group by fuel_type;
+3. count the total number of car by each brand
 
-4. count the total number of car each transmission type
-   select transmission_type , count(*) from car
-   group by transmission_type;
+       select brand , count(*) from car
+	   group by brand;
 
-5. count the total number of car of each seller
-   select seller_type , count(*) from car
-   group by seller_type;
+4. count the total number of car by fuel type
 
-6. calculate the avg selling price of each seller type
-   select seller_type , avg(selling_price) from car
-   group by seller_type;
+       select fuel_type , count(*) from car
+	   group by fuel_type;
 
-7. calculate the avg selling price of each transmission type
-   select transmission_type , avg(selling_price) from car
-   group by transmission_type;
+5. count the total number of car each transmission type
 
-8. calculate the avg selling price of each brand
-   select brand , avg(selling_price) from car
-   group by brand;
+       select transmission_type , count(*) from car
+	   group by transmission_type;
 
-9. how many car that have age is more than 10 years
-    select count(*) from car
-   where vehicle_age > 10;
+6. count the total number of car of each seller
 
-10. how many car that have age is less than 10 years
-    select count(*) from car
-where vehicle_age <= 10;
+       select seller_type , count(*) from car
+	   group by seller_type;
 
-11. top 5 most expensive cars
-    select * from car
-    order by selling_price desc
-    limit 5;
+7. calculate the avg selling price of each seller type
 
-12. Compare the average price of manual vs automatic transmission cars.
-    select transmission_type , avg(selling_price) from car
-    group by transmission_type;
+       select seller_type , avg(selling_price) from car
+	   group by seller_type;
 
-13. How many cars are listed by each seller type
-    select seller_type , count(*) from car
-    group by seller_type;
+8. calculate the avg selling price of each transmission type
 
-14. calculate the max mileage of the car
-    select max(mileage) from car;
+   		select transmission_type , avg(selling_price) from car
+	    group by transmission_type;
 
-15. print the top 5 highest mileage car details
-    select * from car
-    order by mileage desc
-    limit 5;
+9. calculate the avg selling price of each brand
 
-16. count the total number of car that have fuel type is petrol and selling price range between 5 to 8 lakhs
-    select count(*) from car
-    where fuel_type = 'petrol' and  selling_price between 500000 and 800000;
+   		select brand , avg(selling_price) from car
+	   	group by brand;
 
-17. calculate the mileage based of transmission type
-    select transmission_type , max(mileage) , min(mileage), avg(mileage) from car
-    group by transmission_type;
+10. how many car that have age is more than 10 years
 
-18. count the total number of car their mileage is more than avg mileage of the car
-    select transmission_type ,count(*) as total_count from car
-    where mileage > (select avg(mileage) from car)
-    group by transmission_type;
+   		select count(*) from car
+	    where vehicle_age > 10;
 
-19. count the total number of car where the selling price is less than 10 lakhs
+11. how many car that have age is less than 10 years
 
-    select count(*) from car
-    where selling_price < 1000000;
+	    select count(*) from car
+		where vehicle_age <= 10;
+
+12. top 5 most expensive cars
+
+		 select * from car
+	     order by mileage desc
+		 limit 5;
+
+13. Compare the average price of manual vs automatic transmission cars.
+
+		select transmission_type , avg(selling_price) from car
+		group by transmission_type;
+
+14. How many cars are listed by each seller type
+
+		select seller_type , count(*) from car
+		group by seller_type;
+
+15. calculate the max mileage of the car
+
+		 select max(mileage) from car;
+
+16. print the top 5 highest mileage car details
+
+		select * from car
+		order by mileage desc
+		limit 5;
+
+17. count the total number of car that have fuel type is petrol and selling price range between 5 to 8 lakhs
+
+		 select count(*) from car
+		 where fuel_type = 'petrol' and  selling_price between 500000 and 800000;
+
+18. calculate the mileage based of transmission type
+
+		 select transmission_type , max(mileage) , min(mileage), avg(mileage) from car
+		 group by transmission_type;
+
+19. count the total number of car their mileage is more than avg mileage of the car
+
+		  select transmission_type ,count(*) as total_count from car
+		  where mileage > (select avg(mileage) from car)
+		  group by transmission_type;
+
+20. count the total number of car where the selling price is less than 10 lakhs
+
+	    select count(*) from car
+	    where selling_price < 1000000;
     
 
-20. what is the maximum and minimum selling price for each fuel type
+21. what is the maximum and minimum selling price for each fuel type
 
-    select fuel_type,  max(selling_price), min(selling_price) from car
-    group by fuel_type;
+	    select fuel_type,  max(selling_price), min(selling_price) from car
+	    group by fuel_type;
 
-21. count the most number of car grouped by model
+22. count the most number of car grouped by model
 
-    select model , count(*) from car
-    group by model;
+	    select model , count(*) from car
+	    group by model;
 
-22. Find the average price of cars grouped by mileage ranges
+23. Find the average price of cars grouped by mileage ranges
 
-  SELECT 
-    CASE 
-	      WHEN mileage BETWEEN 10 AND 15 THEN '10-15 kmpl'
-		    WHEN mileage BETWEEN 15 AND 20 THEN '15-20 kmpl'
-		    WHEN mileage BETWEEN 20 AND 25 THEN '20-25 kmpl'
-		    WHEN mileage > 25 THEN '25+ kmpl'
-		    ELSE 'Below 10 kmpl'
-    END AS mileage_range,
-  AVG(selling_price) AS avg_selling_price
-  FROM Car
-  GROUP BY mileage_range
-  ORDER BY avg_selling_price DESC;
+		  SELECT 
+		    CASE 
+			      WHEN mileage BETWEEN 10 AND 15 THEN '10-15 kmpl'
+				    WHEN mileage BETWEEN 15 AND 20 THEN '15-20 kmpl'
+				    WHEN mileage BETWEEN 20 AND 25 THEN '20-25 kmpl'
+				    WHEN mileage > 25 THEN '25+ kmpl'
+				    ELSE 'Below 10 kmpl'
+		    END AS mileage_range,
+		  AVG(selling_price) AS avg_selling_price
+		  FROM Car
+		  GROUP BY mileage_range
+		  ORDER BY avg_selling_price DESC;
 
-23. -- count the avg mileage of every fuel_type
+24. -- count the avg mileage of every fuel_type
 
-      select fuel_type , avg(mileage) from car
-      group by fuel_type;
+	      select fuel_type , avg(mileage) from car
+	      group by fuel_type;
 
-24. count to total car where mileage is more than 20 and selling_price is less than 3 lakhs
+25. count to total car where mileage is more than 20 and selling_price is less than 3 lakhs
 
-    select count(*) from car
-    where mileage >20 and selling_price <300000;
+	    select count(*) from car
+	    where mileage >20 and selling_price <300000;
 
 
 ## Conclusion
